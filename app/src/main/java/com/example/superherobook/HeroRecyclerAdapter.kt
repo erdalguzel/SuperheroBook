@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recycler_row.view.*
 
-class HeroRecyclerAdapter(val heroList: ArrayList<String>, val heroImage: ArrayList<Bitmap>) :
+class HeroRecyclerAdapter(val heroList: ArrayList<String>, val heroImage: ArrayList<Int>) :
     RecyclerView.Adapter<HeroRecyclerAdapter.HeroViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroViewHolder {
         val inflater =
@@ -21,8 +21,7 @@ class HeroRecyclerAdapter(val heroList: ArrayList<String>, val heroImage: ArrayL
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, RepresentationActivity::class.java)
             intent.putExtra("charName", heroList[position])
-            val singleton = SingletonClass.ChosenHero
-            singleton.image = heroImage[position]
+            intent.putExtra("charImage", heroImage[position])
             holder.itemView.context.startActivity(intent)
         }
     }

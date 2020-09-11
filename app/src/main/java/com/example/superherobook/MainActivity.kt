@@ -12,34 +12,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var superheroNames = ArrayList<String>()
+        val superheroNames = ArrayList<String>()
         superheroNames.add("Wonder Woman")
         superheroNames.add("Batgirl")
         superheroNames.add("Daredevil")
         superheroNames.add("Thor")
         superheroNames.add("Superman")
 
-        var wonderWomanImage =
-            BitmapFactory.decodeResource(applicationContext.resources, R.drawable.wonderwoman)
-        var batGirlImage =
-            BitmapFactory.decodeResource(applicationContext.resources, R.drawable.batgirl)
-        var daredevilImage =
-            BitmapFactory.decodeResource(applicationContext.resources, R.drawable.daredevil)
-        var thorImage = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.thor)
-        var supermanImage =
-            BitmapFactory.decodeResource(applicationContext.resources, R.drawable.superman)
 
-        var superheroImages = ArrayList<Bitmap>()
-        superheroImages.add(wonderWomanImage)
-        superheroImages.add(batGirlImage)
-        superheroImages.add(daredevilImage)
-        superheroImages.add(thorImage)
-        superheroImages.add(supermanImage)
+        val drawableList = ArrayList<Int>()
+
+        val wonderwomanDrawable = R.drawable.wonderwoman
+        val batgirlDrawable = R.drawable.batgirl
+        val daredevilDrawable = R.drawable.daredevil
+        val thorDrawable = R.drawable.thor
+        val supermanDrawable = R.drawable.superman
+
+        drawableList.add(wonderwomanDrawable)
+        drawableList.add(batgirlDrawable)
+        drawableList.add(daredevilDrawable)
+        drawableList.add(thorDrawable)
+        drawableList.add(supermanDrawable)
 
         var manager = LinearLayoutManager(this)
         recyclerView.layoutManager = manager
 
-        var adapter = HeroRecyclerAdapter(superheroNames, superheroImages)
+        var adapter = HeroRecyclerAdapter(superheroNames, drawableList)
         recyclerView.adapter = adapter
     }
 }
